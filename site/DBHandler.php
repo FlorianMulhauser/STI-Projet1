@@ -5,7 +5,7 @@ class DBHandler
     private $conn;
     // Database parameters
     private $servername = "127.0.0.1";
-    private $dbname = "websiteSTI-Project1";
+    private $dbname = "Database 1";
     private $username = "root";
     private $password = "root";
  
@@ -22,7 +22,7 @@ class DBHandler
         
     }
     
-    public function __destruct() {
+    public function __kill() {
         // Terminate the connection
         mysqli_close($this->conn);
     }
@@ -31,6 +31,11 @@ class DBHandler
     public function request($sql) {
         // Execute some SQL queries
         return $this->conn->query($sql);
+    }
+
+    public function execute($sql) {
+        // Insert/modify the table
+        return $this->conn->exec($sql);
     }
 
     
