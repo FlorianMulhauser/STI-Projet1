@@ -17,11 +17,11 @@
 
 </head>
 <body>
-<nav class="brown lighten-1" role="navigation">
+<nav class="blue accent-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">security third</a>
         <ul class="right hide-on-med-and-down">
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Register</a></li>
+            <li><a href="login.php">Login</a></li>
+            <li><a href="register.php">Register</a></li>
         </ul>
 
         <ul id="nav-mobile" class="sidenav">
