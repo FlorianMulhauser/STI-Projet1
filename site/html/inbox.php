@@ -9,7 +9,7 @@
     /**************************************
     * Load Every Message and display them     *
     **************************************/
-    $result = $db->request('SELECT * FROM messages');
+    $result = $db->request("SELECT * FROM messages WHERE receiver = '".$_SESSION["username"]."';");
 
     foreach($result as $row) {
     echo '<div class="row">';

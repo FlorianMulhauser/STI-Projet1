@@ -5,7 +5,8 @@ CREATE TABLE IF NOT EXISTS messages (
                         title TEXT, 
                         message TEXT, 
                         time TEXT,
-                        sender TEXT);
+                        sender TEXT,
+                        receiver TEXT);
 
 CREATE TABLE IF NOT EXISTS user (
                         id INTEGER PRIMARY KEY, 
