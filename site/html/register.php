@@ -1,12 +1,13 @@
 <?php
-include 'DBHandler.php';
+include ("DBHandler.php");
+//require_once 'include/DBHandler.php';
 session_start();
 // Set default timezone
 date_default_timezone_set('UTC');
 
-$dbh = new DBHandler;
+$dbh = new DBHandler();
 // connect
-$dbh->__construct();
+//$dbh->__construct();
 //
 
 //try {
@@ -28,7 +29,7 @@ $sql = "INSERT INTO USER (USERNAME, PASSWORD, VALIDITY, ROLE)"
     "', '".$_POST["TFrole"]."');";
 
 //$ret = $DB.request($sql);
-$ret = $dbh->{execute($sql)};
+$ret = $dbh->execute($sql);
 
     /**************************************
      * Close db connections                *
@@ -37,7 +38,7 @@ $ret = $dbh->{execute($sql)};
     // Close file db connection
     //$db = null;
 
-$dbh->__destruct();
+//$dbh->__destruct();
 
 }
 //catch(PDOException $e) {
