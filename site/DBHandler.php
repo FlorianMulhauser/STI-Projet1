@@ -22,7 +22,7 @@ class DBHandler
         
     }
     
-    public function __kill() {
+    public function __destruct() {
         // Terminate the connection
         mysqli_close($this->conn);
     }

@@ -37,7 +37,7 @@ $ret = $dbh->{execute($sql)};
     // Close file db connection
     //$db = null;
 
-$dbh->__kill();
+$dbh->__destruct();
 
 }
 //catch(PDOException $e) {
