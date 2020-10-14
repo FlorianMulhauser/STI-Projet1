@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS messages (
                         id INTEGER PRIMARY KEY, 
                         title TEXT, 
                         message TEXT, 
-                        time TEXT
+                        time TEXT,
                         sender TEXT);
 
 CREATE TABLE IF NOT EXISTS user (
@@ -14,8 +14,8 @@ CREATE TABLE IF NOT EXISTS user (
                         validity INTEGER,
                         role TEXT);
                         
-INSERT INTO messages (title, message,time) 
-                VALUES ('Bienvenue','Bienvenue sur le site, ceci est un message de deployement',strftime('%Y-%m-%d %H:%M:%S', datetime('now')));
+INSERT INTO messages (title, message,time,sender) 
+                VALUES ('Bienvenue','Bienvenue sur le site, ceci est un message de deployement',strftime('%Y-%m-%d %H:%M:%S', datetime('now')),'SERVER_MSG');
 
 INSERT INTO user (id, username, password, validity, role)
                 VALUES ('0','admin','admin',1,'admin');
