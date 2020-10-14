@@ -1,5 +1,5 @@
 <?php
-include ("DBHandler.php");
+include ("fragments/DBHandler.php");
 //require_once 'include/DBHandler.php';
 session_start();
 // Set default timezone
@@ -29,7 +29,7 @@ $sql = "INSERT INTO USER (USERNAME, PASSWORD, VALIDITY, ROLE)"
     "', '".$_POST["TFrole"]."');";
 
 //$ret = $DB.request($sql);
-$ret = $dbh->execute($sql);
+$dbh->request($sql);
 
     /**************************************
      * Close db connections                *
@@ -40,7 +40,7 @@ $ret = $dbh->execute($sql);
 
 //$dbh->__destruct();
 
-}
+
 //catch(PDOException $e) {
 //    // Print PDOException message
 //    echo $e->getMessage();

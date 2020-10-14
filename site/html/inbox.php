@@ -1,8 +1,7 @@
 <?php include("fragments/header.php"); ?>
-<body>
+<div class="container">
 <h1> Inbox </h1>
 <p> Here's the message you received </p>
-
 <?php include("fragments/DBHandler.php"); 
     $db = new DBHandler();
 
@@ -29,5 +28,5 @@
     echo "</div>";
     }
 ?>
-</body>
+</div>
 <?php include("fragments/footer.php"); ?>
