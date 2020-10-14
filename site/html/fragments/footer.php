@@ -10,17 +10,17 @@
             <div class="col l3 s12">
                 <h5 class="white-text">Settings</h5>
                 <ul>
-                    <li><a class="white-text" href="#!">Link 1</a></li>
-                    <li><a class="white-text" href="#!">Link 2</a></li>
-                    <li><a class="white-text" href="#!">Link 3</a></li>
-                    <li><a class="white-text" href="#!">Link 4</a></li>
+                    <li><a class="white-text" href="deleteUser.php">Delete User</a></li>
+                    <li><a class="white-text" href="modifyUser.php">Modify User</a></li>
+                    <li><a class="white-text" href="createUser.php">Create User</a></li>
+                    <li><a class="white-text" href="changePassword.php">Change Password</a></li>
                 </ul>
             </div>
             <div class="col l3 s12">
                 <h5 class="white-text">Connect</h5>
                 <ul>
-                    <li><a class="white-text" href="#!">Link 1</a></li>
-                    <li><a class="white-text" href="#!">Link 2</a></li>
+                    <li><a class="white-text" href="inbox.php">Inbox</a></li>
+                    <li><a class="white-text" href="logout.php">logout</a></li>
                     <li><a class="white-text" href="#!">Link 3</a></li>
                     <li><a class="white-text" href="#!">Link 4</a></li>
                 </ul>

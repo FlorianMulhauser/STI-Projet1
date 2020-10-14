@@ -18,14 +18,12 @@
 </head>
 <body>
 <nav class="blue accent-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">security third</a>
+
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">security third<img src="../broken_lock.svg" alt="dead logo"></a>
         <ul class="right hide-on-med-and-down">
             <li><a href="login.php">Login</a></li>
             <li><a href="register.php">Register</a></li>
             <li><a href="inbox.php">Inbox</a></li>
-            <li><a href="modifyUser.php">Modify User</a></li>
-            <li><a href="deleteUser.php">Delete user</a></li>
-            <li><a href="changePassword.php">Change Password</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
 
