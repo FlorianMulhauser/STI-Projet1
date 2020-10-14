@@ -1,19 +1,26 @@
 <?php
+include ("DBHandler.php");
+//require_once 'include/DBHandler.php';
 session_start();
 // Set default timezone
 date_default_timezone_set('UTC');
 
-try {
-/**************************************
- * Create databases and                *
- * open connections                    *
- **************************************/
+$dbh = new DBHandler();
+// connect
+//$dbh->__construct();
+//
 
-// Create (connect to) SQLite database in file
-$db = new PDO('sqlite:/usr/share/nginx/databases/database.sqlite');
-// Set errormode to exceptions
-$db->setAttribute(PDO::ATTR_ERRMODE,
-    PDO::ERRMODE_EXCEPTION);
+//try {
+///**************************************
+// * Create databases and                *
+// * open connections                    *
+// **************************************/
+//
+//// Create (connect to) SQLite database in file
+//$db = new PDO('sqlite:/usr/share/nginx/databases/database.sqlite');
+//// Set errormode to exceptions
+//$db->setAttribute(PDO::ATTR_ERRMODE,
+//    PDO::ERRMODE_EXCEPTION);
 
 $sql = "INSERT INTO USER (USERNAME, PASSWORD, VALIDITY, ROLE)"
     ."\n"."VALUES ('".$_POST["TFusername"].
@@ -22,27 +29,25 @@ $sql = "INSERT INTO USER (USERNAME, PASSWORD, VALIDITY, ROLE)"
     "', '".$_POST["TFrole"]."');";
 
 //$ret = $DB.request($sql);
-$ret = $db->exec($sql);
+$ret = $dbh->execute($sql);
 
     /**************************************
      * Close db connections                *
      **************************************/
 
     // Close file db connection
-    $db = null;
+    //$db = null;
+
+//$dbh->__destruct();
+
 }
-catch(PDOException $e) {
-    // Print PDOException message
-    echo $e->getMessage();
-}
+//catch(PDOException $e) {
+//    // Print PDOException message
+//    echo $e->getMessage();
+//}
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Registeration page</title>
-    <meta name="viewport" charset="utf-8" content="width=device-width">
-</head>
+<?php include 'fragments/header.php';?>
 
 <body>
     <h3> Register a person here</h3>
@@ -78,4 +83,5 @@ catch(PDOException $e) {
 
     </form>
 </body>
-</html>
+<?php include 'fragments/footer.php';?>
+

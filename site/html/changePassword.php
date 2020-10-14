@@ -46,12 +46,7 @@ catch(PDOException $e) {
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Change your password here</title>
-    <meta name="viewport" charset="utf-8" content="width=device-width">
-</head>
+<?php include 'fragments/header.php';?>
 
 <body>
     <div> <?php if(isset($alert)) {echo $alert;} ?></div>
@@ -76,6 +71,7 @@ catch(PDOException $e) {
     </form>
 
 </body>
-</html>
+
+<?php include 'fragments/footer.php';?>
 
 
