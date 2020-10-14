@@ -26,6 +26,7 @@
             <li><a href="modifyUser.php">Modify User</a></li>
             <li><a href="deleteUser.php">Delete user</a></li>
             <li><a href="changePassword.php">Change Password</a></li>
+            <li><a href="logout.php">Logout</a></li>
         </ul>
 
         <ul id="nav-mobile" class="sidenav">

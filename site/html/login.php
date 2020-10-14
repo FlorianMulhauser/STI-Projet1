@@ -4,7 +4,7 @@ include("fragments/DBHandler.php");
 session_start();
 
 //check if logged alrdy
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+if(isset($_SESSION["logged"]) && $_SESSION["logged"] === true){
     header("location: inbox.php");
     exit;
 }
@@ -32,16 +32,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         
     }
     if(!empty($username) && !empty($password)){
-    
-        $sql = "SELECT id,username, password FROM user WHERE username = :username AND password = :password ;";
+        /*
+        $sql = "SELECT id,username, password FROM user WHERE username = ':username' AND password = ':password' ;";
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':username',$username,SQLITE3_TEXT);
         $stmt->bindValue(':password',$password,SQLITE3_TEXT);
         $result = $stmt->execute();
         $result = $stmt->fetchAll();
         print_r($result);
-        
-        
+        */
+         $sql = "SELECT * FROM user WHERE username = '".$username."';";
+         $result = $db->request($sql)->fetch();
+         
+         if($result['password'] == $password) {
+             session_start();
+             $_SESSION["logged"]=true;
+             $_SESSION["id"] = $result["id"];
+             $_SESSION["username"]= $result["username"];
+             $_SESSION["role"]=$result["role"];
+             
+         } else {
+             $password =  'wrong password';
+         }
+         
         
     }
 }
