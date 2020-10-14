@@ -1,0 +1,11 @@
+<?php include("fragments/header.php"); ?>
+<body>
+<h1> Inbox </h1>
+<p> Here's the message you received </p>
+
+<?php include("fragments/DBHandler.php"); 
+$db = new DBHandler();
+
+?>
+</body>
+<?php include("fragments/footer.php"); ?>
