@@ -1,9 +1,19 @@
 <?php
 session_start();
+// Set default timezone
+date_default_timezone_set('UTC');
 
-// get DB handler construct
+try {
+/**************************************
+ * Create databases and                *
+ * open connections                    *
+ **************************************/
 
-$DB = new DBHandler();
+// Create (connect to) SQLite database in file
+$db = new PDO('sqlite:/usr/share/nginx/databases/database.sqlite');
+// Set errormode to exceptions
+$db->setAttribute(PDO::ATTR_ERRMODE,
+    PDO::ERRMODE_EXCEPTION);
 
 $sql = "INSERT INTO USER (ID, USERNAME, PASSWORD, VALIDITY, ROLE)"
     ."\n"."VALUES ('".$_GET["uid"].
@@ -13,15 +23,23 @@ $sql = "INSERT INTO USER (ID, USERNAME, PASSWORD, VALIDITY, ROLE)"
     "', '".$_POST["TFrole"]."');";
 
 //$ret = $DB.request($sql);
-$ret = $DB->exec($sql);
+$ret = $db->exec($sql);
 
-// gere erreur de db
+    /**************************************
+     * Close db connections                *
+     **************************************/
 
-// close db
+    // Close file db connection
+    $db = null;
+}
+catch(PDOException $e) {
+    // Print PDOException message
+    echo $e->getMessage();
+}
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Registeration page</title>
     <meta name="viewport" charset="utf-8" content="width=device-width">

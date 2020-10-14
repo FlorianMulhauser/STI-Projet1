@@ -2,27 +2,52 @@
 session_start();
 $id = $_SESSION["id"]; // id of the current connected user
 
-//need to start/connect DB with DBHandler
-$DB = new DBHandler();
+// Set default timezone
+date_default_timezone_set('UTC');
+
+try {
+/**************************************
+ * Create databases and                *
+ * open connections                    *
+ **************************************/
+
+// Create (connect to) SQLite database in file
+$db = new PDO('sqlite:/usr/share/nginx/databases/database.sqlite');
+// Set errormode to exceptions
+$db->setAttribute(PDO::ATTR_ERRMODE,
+    PDO::ERRMODE_EXCEPTION);
 
 $sql = 'SELECT * from USER where ID="'.$id.'";';
 
 //$ret = $DB.request($sql);
-$ret = $DB->query($sql);
+$ret = $db->query($sql);
 
-while($entry = $ret->fetchArray(SQLITE3_ASSOC)){
+foreach($ret as $entry){
     if($_POST["currentPass"] == $entry["PASSWORD"] && $_POST["newPass"] == $entry["confirmPass"]){
         // need to do a proper query
-        $DB->query("UPDATE USER set PASSWORD='".$_POST["newPass"]."' WHERE ID='".$id."'");
+        $db->exec("UPDATE USER set PASSWORD='".$_POST["newPass"]."' WHERE ID='".$id."'");
         $alert = "Password Changed !";
     } else {
         $alert =  "Something is wrong, no change saved.";
     }
 }
+
+    /**************************************
+     * Close db connections                *
+     **************************************/
+
+    // Close file db connection
+    $file_db = null;
+}
+catch(PDOException $e) {
+    // Print PDOException message
+    echo $e->getMessage();
+}
+
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Change your password here</title>
     <meta name="viewport" charset="utf-8" content="width=device-width">
