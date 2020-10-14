@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Welcome to STI project 1 Homepage</title>
-    <meta name="viewport" charset="utf-8" content="width=device-width">
-</head>
+<?php include 'fragments/header.php';?>
 
 <!--    admin only-->
 <div class="container">
@@ -27,4 +22,5 @@
 
     <button type="button" href="changePassword.php" class="btn btn-primary">Change your password</button>
 </div>
-</html>
+
+<?php include 'fragments/footer.php';?>

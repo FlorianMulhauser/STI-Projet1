@@ -55,14 +55,9 @@ catch(PDOException $e) {
 }
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Log IN page</title>
-        <meta name="viewport" charset="utf-8" content="width=device-width">
-    </head>
+<?php include 'fragments/header.php';?>
 
-    <body>
+<body>
     <div>
         <form action="login.php?login=true" role="form">
             <div class="form-group">
@@ -79,5 +74,5 @@ catch(PDOException $e) {
 
         </form>
     </div>
-    </body>
-</html>
+</body>
+<?php include 'fragments/footer.php';?>

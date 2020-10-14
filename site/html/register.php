@@ -37,12 +37,7 @@ catch(PDOException $e) {
 }
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Registeration page</title>
-    <meta name="viewport" charset="utf-8" content="width=device-width">
-</head>
+<?php include 'fragments/header.php';?>
 
 <body>
     <h3> Register a person here</h3>
@@ -78,4 +73,5 @@ catch(PDOException $e) {
 
     </form>
 </body>
-</html>
+<?php include 'fragments/footer.php';?>
+
