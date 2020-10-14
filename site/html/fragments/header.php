@@ -22,6 +22,10 @@
         <ul class="right hide-on-med-and-down">
             <li><a href="login.php">Login</a></li>
             <li><a href="register.php">Register</a></li>
+            <li><a href="inbox.php">Inbox</a></li>
+            <li><a href="modifyUser.php">Modify User</a></li>
+            <li><a href="deleteUser.php">Delete user</a></li>
+            <li><a href="changePassword.php">Change Password</a></li>
         </ul>
 
         <ul id="nav-mobile" class="sidenav">
