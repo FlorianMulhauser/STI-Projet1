@@ -17,3 +17,16 @@ Le repertoire "html" contient :
 
 Le mot de passe pour phpliteadmin est "admin".
 
+
+Pour deployer l'infra : 
+executer le script `deploy.sh` 
+
+executer `docker exec -it sti_project "/bin/bash"`
+
+executer ensuite dedans : `cd usr/share/nginx/databases` 
+
+executer ensuite : `echo ".read deploy_db.sql" | sqlite3 database.sqlite ` 
+
+
+
+
