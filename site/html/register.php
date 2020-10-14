@@ -15,9 +15,8 @@ $db = new PDO('sqlite:/usr/share/nginx/databases/database.sqlite');
 $db->setAttribute(PDO::ATTR_ERRMODE,
     PDO::ERRMODE_EXCEPTION);
 
-$sql = "INSERT INTO USER (ID, USERNAME, PASSWORD, VALIDITY, ROLE)"
-    ."\n"."VALUES ('".$_GET["uid"].
-    "', '".$_POST["TFusername"].
+$sql = "INSERT INTO USER (USERNAME, PASSWORD, VALIDITY, ROLE)"
+    ."\n"."VALUES ('".$_POST["TFusername"].
     "', '".$_POST["TFpassword"].
     "', '".$_POST["TFvalidityT"].
     "', '".$_POST["TFrole"]."');";

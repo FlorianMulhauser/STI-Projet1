@@ -35,7 +35,7 @@ foreach($ret as $entry){
      if($pass !== $_POST["TFpassword"]){
 
          echo "The password is invalid for this user.\n";
-     } else {
+     } else if( $pass !== ""){
 
          $_SESSION["login"] = $username;
          echo "Login successfull !\n";
