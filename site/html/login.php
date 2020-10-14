@@ -1,78 +1,74 @@
-<?php
+<?php 
+include("fragments/DBHandler.php"); 
+// initialize session
 session_start();
-// Set default timezone
-date_default_timezone_set('UTC');
 
-try {
-/**************************************
- * Create databases and                *
- * open connections                    *
- **************************************/
-
-// Create (connect to) SQLite database in file
-$db = new PDO('sqlite:/usr/share/nginx/databases/database.sqlite');
-// Set errormode to exceptions
-$db->setAttribute(PDO::ATTR_ERRMODE,
-    PDO::ERRMODE_EXCEPTION);
-
-$sql = 'SELECT * from USER where USERNAME="'.$_POST["TFusername"].'";';
-
-//$ret = $DB.request($sql);
-$ret = $db->query($sql);
-
-foreach($ret as $entry){
-
-    $id = $entry['ID'];
-    $pass = $entry['PASSWORD'];
-    $username = $entry['USERNAME'];
-
-}
- if($id=""){
-
-     echo "This user doesn't exist, please register him first.\n";
- } else {
-
-     if($pass !== $_POST["TFpassword"]){
-
-         echo "The password is invalid for this user.\n";
-     } else if( $pass !== ""){
-
-         $_SESSION["login"] = $username;
-         echo "Login successfull !\n";
-     }
- }
-
-    /**************************************
-     * Close db connections                *
-     **************************************/
-
-    // Close file db connection
-    $db = null;
-}
-catch(PDOException $e) {
-    // Print PDOException message
-    echo $e->getMessage();
+//check if logged alrdy
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    header("location: inbox.php");
+    exit;
 }
 
+$username = $password = "";
+$username_err = $password_err = "";
+$db = new DBHandler();
+
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    // Check if username is empty
+    if(empty(trim($_POST["username"]))){
+        $username_err = "Please enter username.";
+    } else{
+        $username = trim($_POST["username"]);
+       
+    }
+    
+    // Check if password is empty
+    if(empty(trim($_POST["password"]))){
+        $password_err = "Please enter your password.";
+    } else{
+        $password = trim($_POST["password"]);
+        
+    }
+    if(!empty($username) && !empty($password)){
+    
+        $sql = "SELECT id,username, password FROM user WHERE username = :username AND password = :password ;";
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':username',$username,SQLITE3_TEXT);
+        $stmt->bindValue(':password',$password,SQLITE3_TEXT);
+        $result = $stmt->execute();
+        $result = $stmt->fetchAll();
+        print_r($result);
+        
+        
+        
+    }
+}
 ?>
 <?php include 'fragments/header.php';?>
 
 <body>
-    <div>
-        <form action="login.php?login=true" role="form">
+    <div class="container">
+        <div class="card purple lighten-5">
+        <div class="card-content white-text">
+        <form method="post"  role="form">
             <div class="form-group">
-                <label for="TFusername">Username: </label>
-                <input id="TFusername" class="form-control" type="text" placeholder="USERNAME">
+                <label for="username">Username: </label>
+                <input id="username" name="username" class="form-control" type="text" placeholder="USERNAME">
+                <span class="helper-text" data-error="wrong"><?php echo $username_err; ?></span>
             </div>
 
             <div class="form-group">
-                <label for="TFpassword">Password: </label>
-                <input id="TFpassword" class="form-control" type="text" placeholder="PASSWORD">
+                <label for="password" class="validate">Password: </label>
+                <input id="password" name="password" class="form-control" type="text" placeholder="PASSWORD">
+                <span class="helper-text"><?php echo $username_err; ?></span>
             </div>
-
-            <button class="btn btn-default" type="submit">Log in</button>
+            <button class="btn btn-default" type="submit" >Log in</button>
 
         </form>
+        </div>
+        </div>
     </div>
 </body>
 <?php include 'fragments/footer.php';?>

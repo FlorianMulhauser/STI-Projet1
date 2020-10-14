@@ -29,6 +29,9 @@ class DBHandler
     public function exec($sql)  {
         $this->conn->exec($sql);
     }
-
+    
+    public function prepare($sql) {
+        return $this->conn->prepare($sql);
+    }
     
 } 
