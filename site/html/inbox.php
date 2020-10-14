@@ -1,4 +1,5 @@
 <?php include("fragments/header.php"); ?>
+<?php include("fragments/loginFilter.php"); ?>
 <div class="container">
 <h1> Inbox </h1>
 <p> Here's the message you received </p>

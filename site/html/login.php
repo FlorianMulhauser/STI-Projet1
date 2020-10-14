@@ -1,13 +1,16 @@
 <?php 
-include("fragments/DBHandler.php"); 
-// initialize session
 session_start();
 
 //check if logged alrdy
-if(isset($_SESSION["logged"]) && $_SESSION["logged"] === true){
+
+if(isset($_SESSION["logged"]) && $_SESSION["logged"] == true){
     header("location: inbox.php");
     exit;
+    
 }
+
+include("fragments/DBHandler.php"); 
+
 
 $username = $password = "";
 $username_err = $password_err = "";
@@ -43,16 +46,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         */
          $sql = "SELECT * FROM user WHERE username = '".$username."';";
          $result = $db->request($sql)->fetch();
-         
+         echo $result['id'];
          if($result['password'] == $password) {
-             session_start();
+            $password_err =  'good password';
+            
+             
              $_SESSION["logged"]=true;
              $_SESSION["id"] = $result["id"];
              $_SESSION["username"]= $result["username"];
              $_SESSION["role"]=$result["role"];
              
          } else {
-             $password =  'wrong password';
+             $password_err =  'wrong password';
          }
          
         
@@ -75,7 +80,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="form-group">
                 <label for="password" class="validate">Password: </label>
                 <input id="password" name="password" class="form-control" type="text" placeholder="PASSWORD">
-                <span class="helper-text"><?php echo $username_err; ?></span>
+                <span class="helper-text red-text"><?php echo $password_err; ?></span>
             </div>
             <button class="btn btn-default" type="submit" >Log in</button>
 
