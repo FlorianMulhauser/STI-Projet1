@@ -1,14 +1,26 @@
 <?php
 session_start();
-//need to start/connect DB with DBHandler
-$DB = new DBHandler();
+// Set default timezone
+date_default_timezone_set('UTC');
+
+try {
+/**************************************
+ * Create databases and                *
+ * open connections                    *
+ **************************************/
+
+// Create (connect to) SQLite database in file
+$db = new PDO('sqlite:/usr/share/nginx/databases/database.sqlite');
+// Set errormode to exceptions
+$db->setAttribute(PDO::ATTR_ERRMODE,
+    PDO::ERRMODE_EXCEPTION);
 
 $sql = 'SELECT * from USER where USERNAME="'.$_POST["TFusername"].'";';
 
 //$ret = $DB.request($sql);
-$ret = $DB->query($sql);
+$ret = $db->query($sql);
 
-while($entry = $ret->fetchArray(SQLITE3_ASSOC)){
+foreach($ret as $entry){
 
     $id = $entry['ID'];
     $pass = $entry['PASSWORD'];
@@ -30,11 +42,21 @@ while($entry = $ret->fetchArray(SQLITE3_ASSOC)){
      }
  }
 
- // close the DB ?
+    /**************************************
+     * Close db connections                *
+     **************************************/
+
+    // Close file db connection
+    $db = null;
+}
+catch(PDOException $e) {
+    // Print PDOException message
+    echo $e->getMessage();
+}
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Log IN page</title>
         <meta name="viewport" charset="utf-8" content="width=device-width">
