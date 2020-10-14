@@ -6,35 +6,9 @@
 <?php include("fragments/DBHandler.php"); 
     $db = new DBHandler();
 
-    $db->exec("CREATE TABLE IF NOT EXISTS messages (
-                        id INTEGER PRIMARY KEY, 
-                        title TEXT, 
-                        message TEXT, 
-                        time TEXT)"); 
-    // Array with some test data to insert to database             
-    $messages = array(
-                  array('title' => 'Hello!',
-                        'message' => 'Just testing...',
-                        'time' => 1327301464),
-                  array('title' => 'Hello again!',
-                        'message' => 'More testing...',
-                        'time' => 1339428612),
-                  array('title' => 'Hi!',
-                        'message' => 'SQLite3 is cool...',
-                        'time' => 1327214268)
-                );
- 
- 
     /**************************************
-    * Play with databases and tables      *
+    * Load Every Message and display them     *
     **************************************/
- 
-    foreach ($messages as $m) {
-        $formatted_time = date('Y-m-d H:i:s', $m['time']);
-        $db->exec("INSERT INTO messages (title, message, time) 
-                VALUES ('{$m['title']}', '{$m['message']}', '{$formatted_time}')");
-    }
-    
     $result = $db->request('SELECT * FROM messages');
 
     foreach($result as $row) {
