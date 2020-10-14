@@ -5,7 +5,7 @@ $id = $_SESSION["id"]; // id of the current connected user
 //need to start/connect DB with DBHandler
 $DB = new DBHandler();
 
-$sql = 'SELECT * from USERS where ID="'.$id.'";';
+$sql = 'SELECT * from USER where ID="'.$id.'";';
 
 //$ret = $DB.request($sql);
 $ret = $DB->query($sql);
@@ -13,7 +13,7 @@ $ret = $DB->query($sql);
 while($entry = $ret->fetchArray(SQLITE3_ASSOC)){
     if($_POST["currentPass"] == $entry["PASSWORD"] && $_POST["newPass"] == $entry["confirmPass"]){
         // need to do a proper query
-        $DB->query("UPDATE USERS set PASSWORD='".$_POST["newPass"]."' WHERE ID='".$id."'");
+        $DB->query("UPDATE USER set PASSWORD='".$_POST["newPass"]."' WHERE ID='".$id."'");
         $alert = "Password Changed !";
     } else {
         $alert =  "Something is wrong, no change saved.";

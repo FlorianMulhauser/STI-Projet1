@@ -1,9 +1,9 @@
 <?php
 session_start();
 //need to start/connect DB with DBHandler
-$db = new DBHandler();
+$DB = new DBHandler();
 
-$sql = 'SELECT * from USERS where USERNAME="'.$_POST["TFusername"].'";';
+$sql = 'SELECT * from USER where USERNAME="'.$_POST["TFusername"].'";';
 
 //$ret = $DB.request($sql);
 $ret = $DB->query($sql);
@@ -25,7 +25,7 @@ while($entry = $ret->fetchArray(SQLITE3_ASSOC)){
          echo "The password is invalid for this user.\n";
      } else {
 
-         $_SESSION["login"]=$username;
+         $_SESSION["login"] = $username;
          echo "Login successfull !\n";
      }
  }
