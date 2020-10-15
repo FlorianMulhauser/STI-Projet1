@@ -7,3 +7,6 @@ docker run -ti -v "/$PWD/site":/usr/share/nginx/ -d -p 8080:80 --name sti_projec
 docker exec -u root sti_project service nginx start
 docker exec -u root sti_project service php5-fpm start
 
+#since db is shared between container and user we need to chmod it to be able to write on it :/
+sudo chmod 777 $PWD/site/databases
+sudo chmod 777 $PWD/site/databases/database.sqlite

@@ -21,6 +21,7 @@ if(isset($_GET['id'])) {
     $message_time = $message['time'];
 
     $result = $db->exec("DELETE FROM messages WHERE id = '".$id."';");
+    
     header("location: ../inbox.php");
 }	
 ?>

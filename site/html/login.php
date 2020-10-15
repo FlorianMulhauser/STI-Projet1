@@ -55,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
              $_SESSION["id"] = $result["id"];
              $_SESSION["username"]= $result["username"];
              $_SESSION["role"]=$result["role"];
-             
+             header("location: inbox.php");
          } else {
             if($result['password'] != $password) {
              $password_err =  'wrong password';
