@@ -24,24 +24,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
 
+    $id = $_SESSION["id"];
+
     if(empty($confirmation_password_err) && empty($new_password_err)){
-        $sql = "UPDATE user SET password = :password WHERE id = :id";
+        $sql = "UPDATE user SET password = '".$new_password."' WHERE id = '".$id."'";
 
-        $id = $_SESSION["id"];
+        $db->exec($sql);
+        $alert = "Password changed !";
 
-        if($stmt = $db->prepare($sql)){
-
-            $stmt->bindParam(":password", $new_password, SQLITE3_TEXT);
-            $stmt->bindParam(":id", $id , SQLITE3_INTEGER);
-
-            if($stmt->execute()){
-                $alert = "Password changed !";
-                header("location: logout.php");
-                exit;
-            } else {
-                $alert = "An error occured.";
-            }
-        }
+    } else {
+        $alert = "An error occured.";
     }
 }
 
@@ -52,19 +44,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
     <div> <?php if(isset($alert)) {echo $alert;} ?></div>
     <form method="post" action="" role="form">
-<!--        <div class="form-group">-->
-<!--            <label for="currentPass">Current Password: </label>-->
-<!--            <input id="currentPass" class="form-control" type="text" placeholder="CURRENT PASSWORD">-->
-<!--        </div>-->
 
         <div class="form-group">
             <label for="new_password">New Password: </label>
-            <input id="new_password" class="form-control" type="text" placeholder="NEW PASSWORD">
+            <input id="new_password" name="new_password" class="form-control" type="text" placeholder="NEW PASSWORD">
         </div>
 
         <div class="form-group">
             <label for="confirmation_password">Confirm Password: </label>
-            <input id="confirmation_password" class="form-control" type="text" placeholder="CONFIRM PASSWORD">
+            <input id="confirmation_password" name="confirmation_password" class="form-control" type="text" placeholder="CONFIRM PASSWORD">
         </div>
 
         <button class="btn btn-default" type="submit">Change password</button>
