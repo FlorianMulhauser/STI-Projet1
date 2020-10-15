@@ -51,8 +51,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
 
-    if(!empty($username) && !empty($password) && !empty($validity) && !empty($role)){
-        if(empty($username_err) && empty($validity_err) && empty($password_err) && empty($role_err)){
+    if(!empty($username) && !empty($password) && !empty($role)){
+        if(empty($username_err) && empty($password_err) && empty($role_err)){
             $sql = "INSERT INTO user (username, password, validity, role) VALUES ('".$username."', '".$password."', '".$validity."', '".$role."');";
 
             $db->exec($sql);
