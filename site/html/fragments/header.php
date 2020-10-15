@@ -21,10 +21,10 @@
 
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">security third<img src="../broken_lock.svg" alt="dead logo"></a>
         <ul class="right hide-on-med-and-down">
-            <li><a href="login.php">Login</a></li>
-            <li><a href="register.php">Register</a></li>
-            <li><a href="inbox.php">Inbox</a></li>
-            <li><a href="logout.php">Logout</a></li>
+            <li><a href="/login.php">Login</a></li>
+            <li><a href="/register.php">Register</a></li>
+            <li><a href="/inbox.php">Inbox</a></li>
+            <li><a href="/logout.php">Logout</a></li>
         </ul>
 
         <ul id="nav-mobile" class="sidenav">

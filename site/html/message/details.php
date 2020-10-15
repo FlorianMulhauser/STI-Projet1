@@ -1,7 +1,7 @@
 <?php include("../fragments/header.php"); ?>
 <?php 
 include("../fragments/DBHandler.php");
-$message_content = "";
+$message_content = $message_sender =$message_time =  "";
 
 
 if(isset($_GET['id'])) {
@@ -16,8 +16,9 @@ if(isset($_GET['id'])) {
     $result = $db->request("SELECT * FROM messages WHERE id = '".$id."';");
     
     $message = $result->fetch();
-
+    $message_sender = $message['sender'];
     $message_content =  $message['message'];
+    $message_time = $message['time'];
 }
 ?>
 <div class="container">
@@ -27,6 +28,10 @@ if(isset($_GET['id'])) {
 			Content:
 		</div>
 		<?php  echo $message_content ?>
+		<div class="card-action"> 
+			 <span style="float:right;"><?php echo $message_time ?></span>
+		From: <?php echo $message_sender?> 
+		</div>
 	</div>
 </div>
 </div>
