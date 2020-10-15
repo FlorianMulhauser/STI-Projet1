@@ -37,27 +37,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     if(!empty($username) && !empty($password) && !empty($validity) && !empty($role)){
-        $sql = "INSERT INTO user (username, password, validity, role) VALUES ('".$username."', '".$password."', '".$validity."', '".$role."');";
+        if(empty($username_err) && empty($validity_err) && empty($password_err) && empty($role_err)){
+            $sql = "INSERT INTO user (username, password, validity, role) VALUES ('".$username."', '".$password."', '".$validity."', '".$role."');";
 
-//        $stmt = $db->prepare($sql);
-//        $stmt->bindValue(':username',$username,SQLITE3_TEXT);
-//        $stmt->bindValue(':password',$password,SQLITE3_TEXT);
-//        $stmt->bindValue(':validity',$validity,SQLITE3_INTEGER);
-//        $stmt->bindValue(':role',$role,SQLITE3_TEXT);
-
-        // Attempt to execute the prepared statement
-//        if($stmt->execute()){
-//            echo "User created !";
-//        } else{
-//            echo "Something went wrong.";
-//        }
-//        // Close statement
-//        unset($stmt);
-//
-        $db->exec($sql);
+            $db->exec($sql);
+            echo "New user registered !";
+        }
+        echo "An error occured.";
     }
-//    // Close connection
-//    unset($db);
+
 }
 
 ?>
