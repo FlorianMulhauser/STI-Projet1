@@ -1,3 +1,4 @@
+
 <?php include("fragments/adminFilter.php");
 
 
@@ -38,16 +39,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET" )
         $password = trim($_POST["TFpassword"]);
     }
     // Check if validity is empty
-    if(empty(trim(isset($_POST["TFvalidity"])))){
+    if(empty(trim(isset($_POST["active"])))){
         $validity_err = "Please give the validity.";
     } else{
-        $validity = trim($_POST["TFvalidity"]);
+        $validity = trim($_POST["active"]);
     }
     // Check if role is empty
-    if(empty(trim(isset($_POST["TFrole"])))){
+    if(empty(trim(isset($_POST["role"])))){
         $role_err = "Please enter the role.";
     } else{
-        $role = trim($_POST["TFrole"]);
+        $role = trim($_POST["role"]);
     }
 
    
@@ -69,11 +70,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET" )
 }
 
 ?>
-<?php //include("fragments/header.php"); ?>
+<?php include("fragments/header.php"); ?>
 <body>
 
-
 <div class="container">
+<div class="card light-grey">
+<div class="card-content">
 <?php if(empty($username)) { 
     echo ' <h4> Hello there admin ! </h4>
 <p> Modify a user here<p>
@@ -105,21 +107,34 @@ echo '
 
 
         <div class="form-group">Choose the activity:
-            <input type="radio" name="TFvalidity"
-               
-                   value="1">Active
-            <input type="radio" name="TFvalidity"
-                
-                   value="0">Inactive
+            <p>
+      <label>
+        <input name="active" value="1" type="radio" checked />
+        <span>Active</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name="active" value="0" type="radio" />
+        <span>Inactive</span>
+      </label>
+    </p>
+        
         </div>
 
         <div class="form-group">Choose the role:
-            <input type="radio" name="TFrole"
-                
-                   value="collaborateur">Collaborateur
-            <input type="radio" name="TFrole"
-                
-                   value="administrateur">Administrateur
+            <p>
+      <label>
+        <input name="role" type="radio" value="collaborateur" checked />
+        <span>Collaborateur</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name="role" type="radio" value="administrateur" />
+        <span>Administrateur</span>
+      </label>
+    </p>
         </div>
 
         <button class="btn btn-warning" type="submit">Save changes</button>
@@ -129,6 +144,8 @@ header("location: modifyUser.php?notFound=".$username); }
 ?>
 <?php echo $username_not_found ?>
 </div>
+</div>
+</div>
 </body>
-<?php //include 'fragments/footer.php';?>
+<?php include 'fragments/footer.php';?>
 
