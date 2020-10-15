@@ -42,8 +42,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             $db->exec($sql);
             echo "New user registered !";
+        } else {
+            echo "An error occured.";
         }
-        echo "An error occured.";
     }
 
 }
@@ -85,7 +86,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                        value="administrateur">Administrateur
             </div>
 
-            <button class="btn btn-default" type="submit">Register the user</button>
+            <button class="btn btn-success" type="submit">Register the user</button>
 
         </form>
     </div>

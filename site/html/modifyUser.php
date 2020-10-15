@@ -54,8 +54,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET"){
             $db->exec($sqlUpdate);
             echo "Updated !";
             exit;
+        } else {
+
+            echo "an error ocurred";
         }
-        echo "an error ocurred";
     }
 
 }
@@ -105,7 +107,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET"){
                    value="administrateur">Administrateur
         </div>
 
-        <button class="btn btn-default" type="submit">Save changes</button>
+        <button class="btn btn-warning" type="submit">Save changes</button>
     </form>
 </div>
 </body>
