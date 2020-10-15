@@ -1,9 +1,13 @@
 <?php 
 include("../fragments/DBHandler.php");
 session_start();
+$receiver = $title = $content = $sender = "";
+if(isset($_GET['receiver'])) {
+$receiver=trim($_GET['receiver']);
+}
 // todo add login verif
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-    $receiver = $title = $content = $sender = "";
+    
     $sender = $_SESSION['username'];
     // Check if username is empty
     if(empty(trim($_POST["receiver"]))){
@@ -36,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="container">
 	<form method="post"  role="form">
-		<input name="receiver" placeholder="receiver" type="text">
+		<input name="receiver" value= <?php echo "'".$receiver."'" ?> placeholder="receiver" type="text">
 		<input name="title" placeholder="title" type="text">
 		<input name="content" placeholder="content" type="text">
 		<button type="submit" value="submit"> submit </button>

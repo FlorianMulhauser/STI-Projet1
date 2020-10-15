@@ -9,7 +9,7 @@
     /**************************************
     * Load Every Message and display them     *
     **************************************/
-    $result = $db->request("SELECT * FROM messages WHERE receiver = '".$_SESSION["username"]."';");
+    $result = $db->request("SELECT * FROM messages WHERE receiver = '".$_SESSION["username"]."' ORDER BY time DESC;");
 
     foreach($result as $row) {
     echo '<div class="row">';
@@ -25,7 +25,7 @@
                 echo '<div class="card-action">';
                     echo "Time: " . $row['time'] . "<br/>";
                     // reply
-                    echo '<a class="btn-floating btn-small waves-effect waves-light green" type="submit" href="message/reply.php?reply&id='.$row['id'].'"><i class="material-icons">reply</i></a>';
+                    echo '<a class="btn-floating btn-small waves-effect waves-light green" type="submit" href="message/create.php?reply&id='.$row['id'].'&receiver='.$row['sender'].'"><i class="material-icons">reply</i></a>';
                     // details
                     echo '<a class="btn-floating btn-small waves-effect waves-light green" type="submit" href="message/details.php?id='.$row['id'].'" ><i class="material-icons">arrow_downward</i></a>';
                     // delete
