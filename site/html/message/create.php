@@ -8,7 +8,7 @@ $title = trim($_GET['title']);
 }
 // todo add login verif
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+   
     $sender = $_SESSION['username'];
     // Check if username is empty
     if(empty(trim($_POST["receiver"]))){
@@ -33,6 +33,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
    		$db = new DBHandler();
     	$db->exec("INSERT INTO messages (title, message,sender,receiver) 
                 VALUES ('".$title."','".$content."','".$sender."','".$receiver."')");
+ 		header("location: /inbox.php");
    	}
    }
 ?>
