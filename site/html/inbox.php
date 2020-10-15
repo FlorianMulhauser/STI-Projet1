@@ -25,7 +25,7 @@
                 echo '<div class="card-action">';
                     echo "Time: " . $row['time'] . "<br/>";
                     // reply
-                    echo '<a class="btn-floating btn-small waves-effect waves-light green" type="submit" href="message/create.php?reply&id='.$row['id'].'&receiver='.$row['sender'].'"><i class="material-icons">reply</i></a>';
+                    echo '<a class="btn-floating btn-small waves-effect waves-light green" type="submit" href="message/create.php?reply&id='.$row['id'].'&receiver='.$row['sender'].'&title='.$row['title'].'"><i class="material-icons">reply</i></a>';
                     // details
                     echo '<a class="btn-floating btn-small waves-effect waves-light green" type="submit" href="message/details.php?id='.$row['id'].'" ><i class="material-icons">arrow_downward</i></a>';
                     // delete

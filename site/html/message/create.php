@@ -2,8 +2,9 @@
 include("../fragments/DBHandler.php");
 session_start();
 $receiver = $title = $content = $sender = "";
-if(isset($_GET['receiver'])) {
+if(isset($_GET['receiver']) && isset($_GET['title'])) {
 $receiver=trim($_GET['receiver']);
+$title = trim($_GET['title']);
 }
 // todo add login verif
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -41,7 +42,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="container">
 	<form method="post"  role="form">
 		<input name="receiver" value= <?php echo "'".$receiver."'" ?> placeholder="receiver" type="text">
-		<input name="title" placeholder="title" type="text">
+		<input name="title" placeholder="title" type="text" value=<?php 
+		if(isset($_GET['receiver']) && isset($_GET['title'])) {
+			echo "'RE: ".$title."'";
+		}
+		?>>
 		<input name="content" placeholder="content" type="text">
 		<button type="submit" value="submit"> submit </button>
 	</form>
