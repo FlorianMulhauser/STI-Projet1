@@ -25,6 +25,7 @@
             <li><a href="/register.php">Register</a></li>
             <li><a href="/inbox.php">Inbox</a></li>
             <li><a href="/logout.php">Logout</a></li>
+            <li><a href="/message/create.php">New Message</a></li>
         </ul>
 
         <ul id="nav-mobile" class="sidenav">
