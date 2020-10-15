@@ -30,7 +30,6 @@ if(empty($_GET['TFusername'])) {
     
 if($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET" ){
     
-    // Check if username is empty
     
     // Check if password is empty
     if(empty(trim(isset($_POST["TFpassword"])))){
@@ -52,15 +51,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET" )
     }
 
    
-
-    if(!empty($username) && !empty($password) && !empty($validity) && !empty($role)){
-        if(empty($username_err) && empty($validity_err) && empty($password_err) && empty($role_err)){
-            $sqlUpdate = "UPDATE user SET (password, validity, role) VALUES ('".$password."', '".$validity."', '".$role."')  WHERE username = '".$username."';";
-
+    
+    if($_SERVER["REQUEST_METHOD"] == "POST" ) {
+    
+    $username =$_GET['username']; 
+    $id = $_GET['id'];
+    if(!empty($username) && !empty($password) && !empty($validity) && !empty($role)) {
+    
+            $sqlUpdate = "UPDATE user SET password = '".$password."' , validity = '".$validity."', role = '".$role."' WHERE id = '".$id."';";
             $db->exec($sqlUpdate);
-            echo "Updated !";
+            header("location modifyUser.php");
             exit;
-        } 
+            }
+        
     }
 
 }
@@ -91,7 +94,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET" )
 if(!empty($username) && isset($id)) {
 echo "Modifiy the user <b>".$username."</b></br>";
 echo '
-    <form action="modifyUser.php" role="form" method="post">
+    <form action="modifyUser.php?username='.$username.'&id='.$id.'" role="form" method="post">
         <p> Change this user parameters <p>
         <div class="form-group">
         <label for="TFusername">Username: </label>
