@@ -1,47 +1,48 @@
-<?php
-session_start();
-$id = $_SESSION["id"]; // id of the current connected user
+<?php include("fragments/loginFilter.php");
 
-// Set default timezone
-date_default_timezone_set('UTC');
+include("fragments/DBHandler.php");
+$db = new DBHandler();
+$new_password = $confirmation_password = "";
+$new_password_err = $confirmation_password_err = "";
 
-try {
-/**************************************
- * Create databases and                *
- * open connections                    *
- **************************************/
+if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-// Create (connect to) SQLite database in file
-$db = new PDO('sqlite:/usr/share/nginx/databases/database.sqlite');
-// Set errormode to exceptions
-$db->setAttribute(PDO::ATTR_ERRMODE,
-    PDO::ERRMODE_EXCEPTION);
-
-$sql = 'SELECT * from USER where ID="'.$id.'";';
-
-//$ret = $DB.request($sql);
-$ret = $db->query($sql);
-
-foreach($ret as $entry){
-    if($_POST["currentPass"] == $entry["PASSWORD"] && $_POST["newPass"] == $entry["confirmPass"]){
-        // need to do a proper query
-        $db->exec("UPDATE USER set PASSWORD='".$_POST["newPass"]."' WHERE ID='".$id."'");
-        $alert = "Password Changed !";
-    } else {
-        $alert =  "Something is wrong, no change saved.";
+    // Check if new_password is empty
+    if(empty(trim($_POST["new_password"]))){
+        $new_password_err = "Enter a new password.";
+    } else{
+        $new_password = trim($_POST["new_password"]);
     }
-}
 
-    /**************************************
-     * Close db connections                *
-     **************************************/
+    // Assert confirm password
+    if(empty(trim($_POST["confirmation_password"]))){
+        $confirmation_password_err = "Confirm your password.";
+    } else{
+        $confirmation_password = trim($_POST["confirmation_password"]);
+        if(empty($new_password_err) && ($new_password != $confirmation_password)){
+            $confirmation_password_err = "ERROR: Password did not match.";
+        }
+    }
 
-    // Close file db connection
-    $file_db = null;
-}
-catch(PDOException $e) {
-    // Print PDOException message
-    echo $e->getMessage();
+    if(empty($confirmation_password_err) && empty($new_password_err)){
+        $sql = "UPDATE user SET password = :password WHERE id = :id";
+
+        $id = $_SESSION["id"];
+
+        if($stmt = $db->prepare($sql)){
+
+            $stmt->bindParam(":password", $new_password, SQLITE3_TEXT);
+            $stmt->bindParam(":id", $id , SQLITE3_INTEGER);
+
+            if($stmt->execute()){
+                $alert = "Password changed !";
+                header("location: logout.php");
+                exit;
+            } else {
+                $alert = "An error occured.";
+            }
+        }
+    }
 }
 
 ?>
@@ -51,19 +52,19 @@ catch(PDOException $e) {
 <body>
     <div> <?php if(isset($alert)) {echo $alert;} ?></div>
     <form method="post" action="" role="form">
+<!--        <div class="form-group">-->
+<!--            <label for="currentPass">Current Password: </label>-->
+<!--            <input id="currentPass" class="form-control" type="text" placeholder="CURRENT PASSWORD">-->
+<!--        </div>-->
+
         <div class="form-group">
-            <label for="currentPass">Current Password: </label>
-            <input id="currentPass" class="form-control" type="text" placeholder="CURRENT PASSWORD">
+            <label for="new_password">New Password: </label>
+            <input id="new_password" class="form-control" type="text" placeholder="NEW PASSWORD">
         </div>
 
         <div class="form-group">
-            <label for="newPass">New Password: </label>
-            <input id="newPass" class="form-control" type="text" placeholder="NEW PASSWORD">
-        </div>
-
-        <div class="form-group">
-            <label for="confirmPass">Confirm Password: </label>
-            <input id="confirmPass" class="form-control" type="text" placeholder="CONFIRM PASSWORD">
+            <label for="confirmation_password">Confirm Password: </label>
+            <input id="confirmation_password" class="form-control" type="text" placeholder="CONFIRM PASSWORD">
         </div>
 
         <button class="btn btn-default" type="submit">Change password</button>

@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         //$db->exec($sql);
     }
     // Close connection
-    unset($pdo);
+    unset($db);
 }
 
 ?>
