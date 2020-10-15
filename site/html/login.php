@@ -3,11 +3,11 @@ session_start();
 
 //check if logged alrdy
 
-if(isset($_SESSION["logged"]) && $_SESSION["logged"] == true){
+if(isset($_SESSION["logged"]) && $_SESSION["logged"]){
     header("location: inbox.php");
     exit;
-    
-}
+    }
+
 
 include("fragments/DBHandler.php"); 
 
@@ -55,6 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
              $_SESSION["id"] = $result["id"];
              $_SESSION["username"]= $result["username"];
              $_SESSION["role"]=$result["role"];
+             $_SESSION["validity"]=$result["validity"];
              header("location: inbox.php");
          } else {
             if($result['password'] != $password) {
