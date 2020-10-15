@@ -98,9 +98,9 @@ echo '
         <p> Change this user parameters <p>
         <div class="form-group">
         <label for="TFusername">Username: </label>
-            <input id="TFusername" name="TFusername" class="form-control" type="text" placeholder="'.$username.'">
+            <input id="TFusername" name="TFusername" class="form-control" type="text" value="'.$username.'">
             <label for="TFpassword">Password: </label>
-            <input id="TFpassword" name="TFpassword" class="form-control" type="text" placeholder="'.$password.'">
+            <input id="TFpassword" name="TFpassword" class="form-control" type="text" value="'.$password.'">
         </div>
 
 
