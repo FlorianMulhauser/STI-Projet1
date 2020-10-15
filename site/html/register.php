@@ -2,12 +2,26 @@
 
 include("fragments/DBHandler.php");
 
-//include 'fragments/header.php';
+include 'fragments/header.php';
 
 $username = $password = $validity = $role = "";
 $username_err = $password_err = $validity_err = $role_err = "";
+$inactive_checked = $active_checked = $admin_checked = $collab_checked = "";
 
 $db = new DBHandler();
+
+if($validity == '1') {
+    $active_checked = 'checked';
+} else {
+    $inactive_checked = 'checked';
+}
+
+
+if($role == 'administrateur') {
+    $admin_checked = 'checked';
+} else {
+    $collab_checked = 'checked';
+}
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -24,17 +38,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $password = trim($_POST["TFpassword"]);
     }
     // Check if validity is empty
-    if(empty(trim($_POST["TFvalidity"]))){
+    if(empty(trim($_POST["active"]))){
         $validity_err = "Please give the validity.";
     } else{
-        $validity = trim($_POST["TFvalidity"]);
+        $validity = trim($_POST["active"]);
     }
     // Check if role is empty
-    if(empty(trim($_POST["TFrole"]))){
+    if(empty(trim($_POST["role"]))){
         $role_err = "Please enter the role.";
     } else{
-        $role = trim($_POST["TFrole"]);
+        $role = trim($_POST["role"]);
     }
+
 
     if(!empty($username) && !empty($password) && !empty($validity) && !empty($role)){
         if(empty($username_err) && empty($validity_err) && empty($password_err) && empty($role_err)){
@@ -69,21 +84,34 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
             <div class="form-group">Choose the activity:
-                <input type="radio" name="TFvalidity"
-                    <?php if (isset($validity) && $validity=="1") echo "checked";?>
-                       value="1">Active
-                <input type="radio" name="TFvalidity"
-                    <?php if (isset($validity) && $validity=="0") echo "checked";?>
-                       value="0">Inactive
+                <p>
+                    <label>
+                        <input name="active" value="1" type="radio" '.$active_checked.' />
+                        <span>Active</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="active" value="0" type="radio" '.$inactive_checked.' />
+                        <span>Inactive</span>
+                    </label>
+                </p>
+
             </div>
 
             <div class="form-group">Choose the role:
-                <input type="radio" name="TFrole"
-                    <?php if (isset($role) && $role=="collaborateur") echo "checked";?>
-                       value="collaborateur">Collaborateur
-                <input type="radio" name="TFrole"
-                    <?php if (isset($role) && $role=="administrateur") echo "checked";?>
-                       value="administrateur">Administrateur
+                <p>
+                    <label>
+                        <input name="role" type="radio" value="collaborateur" '.$collab_checked.' />
+                        <span>Collaborateur</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="role" type="radio" value="administrateur" '.$admin_checked.' />
+                        <span>Administrateur</span>
+                    </label>
+                </p>
             </div>
 
             <button class="btn btn-success" type="submit">Register the user</button>
@@ -91,5 +119,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </form>
     </div>
 </body>
-<?php //include 'fragments/footer.php';?>
+<?php include 'fragments/footer.php';?>
 
