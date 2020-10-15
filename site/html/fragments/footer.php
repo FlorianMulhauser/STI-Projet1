@@ -8,6 +8,7 @@
 
             </div>
             <div class="col l3 s12">
+            
                 <h5 class="white-text">Settings</h5>
                 <ul>
                     <li><a class="white-text" href="/deleteUser.php">Delete a User</a></li>
