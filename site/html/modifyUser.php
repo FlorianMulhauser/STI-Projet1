@@ -9,6 +9,7 @@ include("fragments/DBHandler.php");
 $username = $password = $validity = $role = $id =  "";
 $username_err = $password_err = $validity_err = $role_err = $username_not_found ="";
 $inactive_checked = $active_checked = $admin_checked = $collab_checked = "";
+
 $db = new DBHandler();
 if(isset($_GET['notFound'])) {
     $username_not_found = "user <b>".$_GET['notFound']."</b> doesn't exist";
@@ -72,13 +73,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET" )
     
     $username =$_GET['username']; 
     $id = $_GET['id'];
-    if(!empty($username) && !empty($password) && !empty($validity) && !empty($role)) {
+    if(!empty($username) && !empty($password)  && !empty($role)) {
     
-            $sqlUpdate = "UPDATE user SET password = '".$password."' , validity = '".$validity."', role = '".$role."' WHERE id = '".$id."';";
+            $sqlUpdate = "UPDATE user SET password = '".$password."' , validity = ".$validity.", role = '".$role."' WHERE id = '".$id."';";
+            
             $db->exec($sqlUpdate);
-            header("location modifyUser.php");
+            header("location: /inbox.php");
             exit;
             }
+            echo "erreur sorry :( ";
         
     }
 
