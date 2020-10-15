@@ -6,10 +6,12 @@ include("fragments/DBHandler.php");
 
 
 $username = $password = $validity = $role = $id =  "";
-$username_err = $password_err = $validity_err = $role_err = "";
+$username_err = $password_err = $validity_err = $role_err = $username_not_found ="";
 
 $db = new DBHandler();
-
+if(isset($_GET['found']) && $_GET['found']==0) {
+    $username_not_found = "user doesn't exist";
+}
 if(empty($_GET['TFusername'])) {
         $username_err = "Please enter username.";
     } else{
@@ -120,8 +122,9 @@ echo '
         <button class="btn btn-warning" type="submit">Save changes</button>
     </form>
 '; } else if( !isset($id) && !empty($username)) {
-echo "this user doesn't exist"; } 
+header("location: modifyUser.php?found=0"); } 
 ?>
+<?php echo $username_not_found ?>
 </div>
 </body>
 <?php //include 'fragments/footer.php';?>
