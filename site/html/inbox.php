@@ -24,9 +24,12 @@
                    // echo $row['message'] . "<br/>";
                 echo '<div class="card-action">';
                     echo "Time: " . $row['time'] . "<br/>";
-                    echo '<a class="btn-floating btn-small waves-effect waves-light green" type="submit" href="inbox.php?reply&id='.$row['id'].'"><i class="material-icons">reply</i></a>';
-                    echo '<a class="btn-floating btn-small waves-effect waves-light green" type="submit" href="inbox.php?details&id='.$row['id'].'" ><i class="material-icons">arrow_downward</i></a>';
-                    echo '<a href="inbox.php?delete&id='.$row['id'].'" class="btn-floating btn-small waves-effect waves-light red" type="submit" ><i class="material-icons">delete_forever</i></a>';
+                    // reply
+                    echo '<a class="btn-floating btn-small waves-effect waves-light green" type="submit" href="message/reply.php?reply&id='.$row['id'].'"><i class="material-icons">reply</i></a>';
+                    // details
+                    echo '<a class="btn-floating btn-small waves-effect waves-light green" type="submit" href="message/details.php?id='.$row['id'].'" ><i class="material-icons">arrow_downward</i></a>';
+                    // delete
+                    echo '<a href="message/delete.php?id='.$row['id'].'" class="btn-floating btn-small waves-effect waves-light red" type="submit" ><i class="material-icons">delete_forever</i></a>';
                     
                 echo '</div>';
             echo "</div>";
