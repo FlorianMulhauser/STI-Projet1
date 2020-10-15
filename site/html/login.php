@@ -47,7 +47,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
          $sql = "SELECT * FROM user WHERE username = '".$username."';";
          $result = $db->request($sql)->fetch();
          echo $result['id'];
-         if($result['password'] == $password) {
+         if($result['password'] == $password && $result['validity'] == 1) {
             $password_err =  'good password';
             
              
@@ -57,7 +57,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
              $_SESSION["role"]=$result["role"];
              
          } else {
+            if($result['password'] != $password) {
              $password_err =  'wrong password';
+            } else if ($result['validity'] != 1) {
+                 $password_err =  'inactive user';
+            } else {
+                 $password_err =  'unknow error woopsie';
+            }
          }
          
         

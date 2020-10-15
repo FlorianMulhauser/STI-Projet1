@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS user (
                         id INTEGER PRIMARY KEY, 
                         username TEXT, 
                         password TEXT, 
-                        validity INTEGER,
+                        validity INTEGER DEFAULT 1,
                         role TEXT);
                         
 INSERT INTO messages (title, message,time,sender,receiver) 
