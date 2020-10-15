@@ -12,52 +12,52 @@ $db = new DBHandler();
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Check if username is empty
-    if(empty(trim($_POST["username"]))){
+    if(empty(trim($_POST["TFusername"]))){
         $username_err = "Please enter username.";
     } else{
-        $username = trim($_POST["username"]);
+        $username = trim($_POST["TFusername"]);
     }
     // Check if password is empty
-    if(empty(trim($_POST["password"]))){
+    if(empty(trim($_POST["TFpassword"]))){
         $password_err = "Please enter password.";
     } else{
-        $password = trim($_POST["password"]);
+        $password = trim($_POST["TFpassword"]);
     }
     // Check if validity is empty
-    if(empty(trim($_POST["validity"]))){
+    if(empty(trim($_POST["TFvalidity"]))){
         $validity_err = "Please give the validity.";
     } else{
-        $validity = trim($_POST["validity"]);
+        $validity = trim($_POST["TFvalidity"]);
     }
     // Check if role is empty
-    if(empty(trim($_POST["role"]))){
+    if(empty(trim($_POST["TFrole"]))){
         $role_err = "Please enter the role.";
     } else{
-        $role = trim($_POST["role"]);
+        $role = trim($_POST["TFrole"]);
     }
 
     if(!empty($username) && !empty($password) && !empty($validity) && !empty($role)){
-        $sql = "INSERT INTO user (username, password, validity, role) VALUES (':username', ':password', ':validity', ':role');";
+        $sql = "INSERT INTO user (username, password, validity, role) VALUES ('".$username."', '".$password."', '".$validity."', '".$role."');";
 
-        $stmt = $db->prepare($sql);
-        $stmt->bindValue(':username',$username,SQLITE3_TEXT);
-        $stmt->bindValue(':password',$password,SQLITE3_TEXT);
-        $stmt->bindValue(':validity',$validity,SQLITE3_INTEGER);
-        $stmt->bindValue(':role',$role,SQLITE3_TEXT);
+//        $stmt = $db->prepare($sql);
+//        $stmt->bindValue(':username',$username,SQLITE3_TEXT);
+//        $stmt->bindValue(':password',$password,SQLITE3_TEXT);
+//        $stmt->bindValue(':validity',$validity,SQLITE3_INTEGER);
+//        $stmt->bindValue(':role',$role,SQLITE3_TEXT);
 
         // Attempt to execute the prepared statement
-        if($stmt->execute()){
-            echo "User created !";
-        } else{
-            echo "Something went wrong.";
-        }
-        // Close statement
-        unset($stmt);
-
-        //$db->exec($sql);
+//        if($stmt->execute()){
+//            echo "User created !";
+//        } else{
+//            echo "Something went wrong.";
+//        }
+//        // Close statement
+//        unset($stmt);
+//
+        $db->exec($sql);
     }
-    // Close connection
-    unset($db);
+//    // Close connection
+//    unset($db);
 }
 
 ?>
@@ -70,22 +70,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <form action="register.php?uid=<?php echo uniqid()?>" role="form" method="post">
             <div class="form-group">
                 <label for="TFusername">Username: </label>
-                <input id="TFusername" class="form-control" type="text" placeholder="USERNAME">
+                <input id="TFusername" name="TFusername" class="form-control" type="text" placeholder="USERNAME">
             </div>
 
             <div class="form-group">
                 <label for="TFpassword">Password: </label>
-                <input id="TFpassword" class="form-control" type="text" placeholder="PASSWORD">
+                <input id="TFpassword" name="TFpassword" class="form-control" type="text" placeholder="PASSWORD">
             </div>
 
 
             <div class="form-group">Choose the activity:
                 <input type="radio" name="TFvalidity"
-                    <?php if (isset($validity) && $validity=="true") echo "checked";?>
-                       value="true">Active
+                    <?php if (isset($validity) && $validity=="1") echo "checked";?>
+                       value="1">Active
                 <input type="radio" name="TFvalidity"
-                    <?php if (isset($validity) && $validity=="false") echo "checked";?>
-                       value="false">Inactive
+                    <?php if (isset($validity) && $validity=="0") echo "checked";?>
+                       value="0">Inactive
             </div>
 
             <div class="form-group">Choose the role:
