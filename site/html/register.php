@@ -1,48 +1,67 @@
-<<<<<<< HEAD
-<?php
-include ("fragments/DBHandler.php");
-//require_once 'include/DBHandler.php';
-session_start();
-// Set default timezone
-date_default_timezone_set('UTC');
-=======
-<?php include("fragments/DBHandler.php");
->>>>>>> 38f0afe0a393f2df7fae526230e95aa3534d35e0
+<?php include("fragments/adminFilter.php");
+
+include("fragments/DBHandler.php");
+
+//include 'fragments/header.php';
+
+$username = $password = $validity = $role = "";
+$username_err = $password_err = $validity_err = $role_err = "";
 
 $db = new DBHandler();
 
-$sql = "INSERT INTO USER (USERNAME, PASSWORD, VALIDITY, ROLE)"
-    ."\n"."VALUES ('".$_POST["TFusername"].
-    "', '".$_POST["TFpassword"].
-    "', '".$_POST["TFvalidityT"].
-    "', '".$_POST["TFrole"]."');";
+if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-//$ret = $DB.request($sql);
-<<<<<<< HEAD
-$dbh->request($sql);
+    // Check if username is empty
+    if(empty(trim($_POST["username"]))){
+        $username_err = "Please enter username.";
+    } else{
+        $username = trim($_POST["username"]);
+    }
+    // Check if password is empty
+    if(empty(trim($_POST["password"]))){
+        $password_err = "Please enter password.";
+    } else{
+        $password = trim($_POST["password"]);
+    }
+    // Check if validity is empty
+    if(empty(trim($_POST["validity"]))){
+        $validity_err = "Please give the validity.";
+    } else{
+        $validity = trim($_POST["validity"]);
+    }
+    // Check if role is empty
+    if(empty(trim($_POST["role"]))){
+        $role_err = "Please enter the role.";
+    } else{
+        $role = trim($_POST["role"]);
+    }
 
-    /**************************************
-     * Close db connections                *
-     **************************************/
+    if(!empty($username) && !empty($password) && !empty($validity) && !empty($role)){
+        $sql = "INSERT INTO user (username, password, validity, role) VALUES (':username', ':password', ':validity', ':role');";
 
-    // Close file db connection
-    //$db = null;
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':username',$username,SQLITE3_TEXT);
+        $stmt->bindValue(':password',$password,SQLITE3_TEXT);
+        $stmt->bindValue(':validity',$validity,SQLITE3_INTEGER);
+        $stmt->bindValue(':role',$role,SQLITE3_TEXT);
 
-//$dbh->__destruct();
+        // Attempt to execute the prepared statement
+        if($stmt->execute()){
+            echo "User created !";
+        } else{
+            echo "Something went wrong.";
+        }
+        // Close statement
+        unset($stmt);
 
-
-//catch(PDOException $e) {
-//    // Print PDOException message
-//    echo $e->getMessage();
-//}
-=======
-$db->exec($sql);
-
->>>>>>> 38f0afe0a393f2df7fae526230e95aa3534d35e0
+        //$db->exec($sql);
+    }
+    // Close connection
+    unset($pdo);
+}
 
 ?>
 
-<?php //include 'fragments/header.php';?>
 
 <body>
     <h3> Register a person here</h3>

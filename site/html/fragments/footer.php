@@ -10,10 +10,10 @@
             <div class="col l3 s12">
                 <h5 class="white-text">Settings</h5>
                 <ul>
-                    <li><a class="white-text" href="deleteUser.php">Delete User</a></li>
-                    <li><a class="white-text" href="modifyUser.php">Modify User</a></li>
-                    <li><a class="white-text" href="createUser.php">Create User</a></li>
-                    <li><a class="white-text" href="changePassword.php">Change Password</a></li>
+                    <li><a class="white-text" href="deleteUser.php">Delete a User</a></li>
+                    <li><a class="white-text" href="modifyUser.php">Modify a User</a></li>
+                    <li><a class="white-text" href="register.php">Create User</a></li>
+                    <li><a class="white-text" href="changePassword.php">Change your Password</a></li>
                 </ul>
             </div>
             <div class="col l3 s12">
@@ -29,7 +29,7 @@
     </div>
     <div class="footer-copyright">
         <div class="container">
-            Made by Roro et Floflo
+            Made by Robin Cuénoud & Florian Mülhauser
         </div>
     </div>
 </footer>
