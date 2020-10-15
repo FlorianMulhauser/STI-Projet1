@@ -1,3 +1,4 @@
+<?php include("../fragments/loginFilter.php"); ?>
 <?php include("../fragments/header.php"); ?>
 <?php 
 include("../fragments/DBHandler.php");
