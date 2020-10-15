@@ -8,7 +8,7 @@ include("fragments/DBHandler.php");
 
 $username = $password = $validity = $role = $id =  "";
 $username_err = $password_err = $validity_err = $role_err = $username_not_found ="";
-
+$inactive_checked = $active_checked = $admin_checked = $collab_checked = "";
 $db = new DBHandler();
 if(isset($_GET['notFound'])) {
     $username_not_found = "user <b>".$_GET['notFound']."</b> doesn't exist";
@@ -24,7 +24,22 @@ if(empty($_GET['TFusername'])) {
         $id = $result['id'];
         $password = $result['password'];
         $validity = $result['validity'];
+        
         $role = $result['role'];
+        
+        if($validity == '1') {
+            $active_checked = 'checked';
+        } else {
+            $inactive_checked = 'checked';
+        }
+        
+        
+        if($role == 'administrateur') {
+            $admin_checked = 'checked';
+        } else {
+            $collab_checked = 'checked';
+        }
+     
     }
         
     
@@ -77,12 +92,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET" )
 <div class="card light-grey">
 <div class="card-content">
 <?php if(empty($username)) { 
-    echo ' <h4> Hello there admin ! </h4>
-<p> Modify a user here<p>
+    echo ' <span class="card-title"> Modify a user here, search an user first. </span>
     
     <form action="modifyUser.php?uid=<?php echo uniqid()?>" role="form" method="get">
         <div class="form-group">
-            <h3>Search the user to modify by giving the username</h3>
+            
             <label for="TFusername">Username: </label>
             <?php  echo $username ?>
             <input id="TFusername" name="TFusername" class="form-control" type="text" placeholder="USERNAME">
@@ -109,13 +123,13 @@ echo '
         <div class="form-group">Choose the activity:
             <p>
       <label>
-        <input name="active" value="1" type="radio" checked />
+        <input name="active" value="1" type="radio" '.$active_checked.' />
         <span>Active</span>
       </label>
     </p>
     <p>
       <label>
-        <input name="active" value="0" type="radio" />
+        <input name="active" value="0" type="radio" '.$inactive_checked.' />
         <span>Inactive</span>
       </label>
     </p>
@@ -125,13 +139,13 @@ echo '
         <div class="form-group">Choose the role:
             <p>
       <label>
-        <input name="role" type="radio" value="collaborateur" checked />
+        <input name="role" type="radio" value="collaborateur" '.$collab_checked.' />
         <span>Collaborateur</span>
       </label>
     </p>
     <p>
       <label>
-        <input name="role" type="radio" value="administrateur" />
+        <input name="role" type="radio" value="administrateur" '.$admin_checked.' />
         <span>Administrateur</span>
       </label>
     </p>
