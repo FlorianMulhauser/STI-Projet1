@@ -46,7 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         */
          $sql = "SELECT * FROM user WHERE username = '".$username."';";
          $result = $db->request($sql)->fetch();
-         echo $result['id'];
+         
          if($result['password'] == $password && $result['validity'] == 1) {
             $password_err =  'good password';
             
