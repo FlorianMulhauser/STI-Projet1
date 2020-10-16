@@ -42,6 +42,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php include("../fragments/header.php"); ?>
 
 <div class="container">
+<div class="card purple lighten-5">
+    <div class="card-content">
+    <span class="card-title">Write a new message :</span>
 	<form method="post"  role="form">
 		<input name="receiver" value= <?php echo "'".$receiver."'" ?> placeholder="receiver" type="text">
 		<input name="title" placeholder="title" type="text" value=<?php 
@@ -50,9 +53,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 		?>>
 		<input name="content" placeholder="content" type="text">
-		<button type="submit" value="submit"> submit </button>
+		<button type="submit" class="btn btn-success" value="submit"> submit </button>
 	</form>
-
+</div>
+</div>
 </div>
 
 <?php include("../fragments/footer.php"); ?>

@@ -22,6 +22,7 @@
                 <ul>
                     <li><a class="white-text" href="/inbox.php">Inbox</a></li>
                     <li><a class="white-text" href="/logout.php">logout</a></li>
+                    <li><a class="white-text" href="/message/create.php">New Message</a></li>
                 </ul>
             </div>
         </div>
