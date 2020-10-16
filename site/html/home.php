@@ -4,23 +4,23 @@
 <div class="container">
     <h3>Navigation to other admin only pages</h3>
     <!--    admin only-->
-    <button type="button" href="register.php" class="btn btn-primary">Register a new user</button>
+    <a type="button" href="/user/register.php" class="btn btn-warning">Register a new user</a>
 
     <!--    admin only-->
-    <button type="button" href="modifyUser.php" class="btn btn-primary">Modify an existing user</button>
+    <a type="button" href="/user/modifyUser.php" class="btn btn-warning">Modify an existing user</a>
 
     <!--    admin only-->
-    <button type="button" href="deleteUser.php" class="btn btn-primary">Delete a user</button>
+    <a type="button" href="/user/deleteUser.php" class="btn btn-warning">Delete a user</a>
 </div>
 
 <div class="container">
     <h3>Navigation to other pages</h3>
 
-    <button type="button" href="message.php" class="btn btn-primary">Create a new message</button>
+    <a type="button" href="/message/create.php" class="btn btn-primary">Create a new message</a>
 
-    <button type="button" href="inbox.php" class="btn btn-primary">View your inbox</button>
+    <a type="button" href="/inbox.php" class="btn btn-primary">View your inbox</a>
 
-    <button type="button" href="changePassword.php" class="btn btn-primary">Change your password</button>
+    <a type="button" href="/user/changePassword.php" class="btn btn-primary">Change your password</a>
 </div>
 
 <?php include 'fragments/footer.php';?>

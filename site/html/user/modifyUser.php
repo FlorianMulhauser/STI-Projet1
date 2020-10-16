@@ -1,8 +1,8 @@
 <!--- DISCLOSURE SORRY FOR YOUR EYESSS -->
-<?php include("fragments/adminFilter.php");
+<?php include("../fragments/adminFilter.php");
 
 
-include("fragments/DBHandler.php");
+include("../fragments/DBHandler.php");
 
 
 
@@ -88,7 +88,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET" )
 }
 
 ?>
-<?php include("fragments/header.php"); ?>
+<?php include("../fragments/header.php"); ?>
 <body>
 
 <div class="container">
@@ -164,5 +164,5 @@ header("location: modifyUser.php?notFound=".$username); }
 </div>
 </div>
 </body>
-<?php include 'fragments/footer.php';?>
+<?php include '../fragments/footer.php';?>
 

@@ -1,6 +1,6 @@
-<?php include("fragments/loginFilter.php");
+<?php include("../fragments/loginFilter.php");
 
-include("fragments/DBHandler.php");
+include("../fragments/DBHandler.php");
 $db = new DBHandler();
 $new_password = $confirmation_password = "";
 $new_password_err = $confirmation_password_err = "";
@@ -39,7 +39,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 ?>
 
-<?php include 'fragments/header.php';?>
+<?php include '../fragments/header.php';?>
 
 <body>
     <div> <?php if(isset($alert)) {echo $alert;} ?></div>
@@ -61,6 +61,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 </body>
 
-<?php include 'fragments/footer.php';?>
+<?php include '../fragments/footer.php';?>
 
 

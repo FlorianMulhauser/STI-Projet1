@@ -1,8 +1,8 @@
-<?php include("fragments/adminFilter.php");
+<?php include("../fragments/adminFilter.php");
 
-include("fragments/DBHandler.php");
+include("../fragments/DBHandler.php");
 
-include 'fragments/header.php';
+include '../fragments/header.php';
 
 $username = $password = $validity = $role = "";
 $username_err = $password_err = $validity_err = $role_err = "";
@@ -119,5 +119,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </form>
     </div>
 </body>
-<?php include 'fragments/footer.php';?>
+<?php include '../fragments/footer.php';?>
 

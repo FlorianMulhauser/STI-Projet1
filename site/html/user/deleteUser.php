@@ -1,9 +1,9 @@
-<?php include("fragments/adminFilter.php");
+<?php include("../fragments/adminFilter.php");
 
 
-include("fragments/DBHandler.php");
+include("../fragments/DBHandler.php");
 
-include 'fragments/header.php';
+include '../fragments/header.php';
 
 $username = "";
 $username_err = "";
@@ -33,14 +33,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 
 ?>
-<h1> Hello there admin ! </h1>
 <body>
 <h3> Delete a user here</h3>
 <div class="container">
 
     <form action="deleteUser.php?uid=<?php echo uniqid()?>" role="form" method="post">
         <div class="form-group">
-            <h3>Search the user to delete by giving the username</h3>
+            <h4>Search the user to delete by giving the username</h4>
             <label for="TFusername">Username: </label>
 <!--            --><?php // echo $username ?>
             <input id="TFusername" name="TFusername" class="form-control" type="text" placeholder="USERNAME">
@@ -52,5 +51,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 </div>
 </body>
-<?php include 'fragments/footer.php';?>
+<?php include '../fragments/footer.php';?>
 
