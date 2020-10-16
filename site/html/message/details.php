@@ -18,6 +18,7 @@ if(isset($_GET['id'])) {
     
     $message = $result->fetch();
     $message_sender = $message['sender'];
+    $message_title = $message['title'];
     $message_content =  $message['message'];
     $message_time = $message['time'];
 }
@@ -26,12 +27,13 @@ if(isset($_GET['id'])) {
 <div class="card">
 	<div class="card-content">
 		<div class="card-title">
-			Content:
+		 title : <b><?php echo $message_title?></b>  </br>
+			
 		</div>
-		<?php  echo $message_content ?>
+		content: <?php  echo $message_content ?>
 		<div class="card-action"> 
 			 <span style="float:right;"><?php echo $message_time ?></span>
-		From: <?php echo $message_sender?> 
+		From: <b> <?php echo $message_sender?> </b>
 		</div>
 	</div>
 </div>
