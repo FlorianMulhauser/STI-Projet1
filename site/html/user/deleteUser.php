@@ -34,21 +34,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 ?>
 <body>
-<h3> Delete a user here</h3>
 <div class="container">
-
+    <div class="card purple lighten-5">
+    <div class="card-content">
+    <span class="card-title">Search the user to delete by giving the username</span>
     <form action="deleteUser.php?uid=<?php echo uniqid()?>" role="form" method="post">
         <div class="form-group">
-            <h4>Search the user to delete by giving the username</h4>
+            
             <label for="TFusername">Username: </label>
 <!--            --><?php // echo $username ?>
             <input id="TFusername" name="TFusername" class="form-control" type="text" placeholder="USERNAME">
         </div>
-
+        <div class="card-action">
         <button class="btn btn-danger" type="submit">Delete the user</button>
-
+        </div>
     </form>
 
+</div>
+</div>
 </div>
 </body>
 <?php include '../fragments/footer.php';?>
