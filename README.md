@@ -57,7 +57,9 @@ Le répertoire "databases" contient :
 
 Le répertoire "html" contient différents dossiers :
 
-    - fragments: qui contients les fichier pour le CSS (header.php, footer.php) et les filtres(adminFilter.php, loginFilter.php). TODO DBHandler
+    - filters: qui contient les filtres d'autorisation (login requis ou administrateur requis). Avec les fichiers loginFilter.php, adminFilter.php.
+    - fragments: qui contients les fichier pour le CSS (header.php, footer.php, et le logo  broken_lock.svg ).
+    - handlers: Qui contient les fichier handler qu'on importe. C'est dans le fichier DBHandler.php qu'on a la classe DBHandler, qui permet de faciliter les connexions et requêtes à la DB dans les autres pages. Elle se construit/connecte et se détruit toute seule, et on a des méthode pour faire des requetes SQL(query, exec, prepare).
     - message: qui regroupe les fichier php pour créer, supprimer, afficher en détails et répondre aux messages (respectivement: create.php, delete.php, details.php, reply.php)
     - user: qui regroupe les fichiers relatifs à la table user de la DB. Il y a donc: 
     		- changePassword.php: pour modifier le mot de passe de son compte

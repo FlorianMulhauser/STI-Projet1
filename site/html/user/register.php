@@ -4,9 +4,11 @@ include("../handlers/DBHandler.php");
 
 include '../fragments/header.php';
 
-$username = $password = $validity = $role = "";
+$username = $password = $role = "";
+$validity = '0';
 $username_err = $password_err = $validity_err = $role_err = "";
 $inactive_checked = $active_checked = $admin_checked = $collab_checked = "";
+
 
 $db = new DBHandler();
 
