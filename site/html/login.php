@@ -86,7 +86,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="form-group">
                 <label for="password" class="validate">Password: </label>
-                <input id="password" name="password" class="form-control" type="text" placeholder="PASSWORD">
+                <input id="password" type="password" name="password" class="form-control" type="text" placeholder="PASSWORD">
                 <span class="helper-text red-text"><?php echo $password_err; ?></span>
             </div>
             <button class="btn btn-default" type="submit" >Log in</button>
