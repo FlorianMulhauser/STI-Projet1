@@ -1,5 +1,7 @@
 <?php include 'fragments/header.php';?>
 <?php include("filters/loginFilter.php"); ?>
+<div class="card purple lighten-5">
+<div class="card-content">
 <!--    admin only-->
 <div class="container"
     <?php
@@ -7,7 +9,10 @@
     if(isset($_SESSION['role']) && $_SESSION['role'] == "administrateur") {
         echo ' style="visibility:visible;"';
     } else  {
-        echo ' style="visibility:hidden;"';
+        echo ' style="visibility:hidden;
+        position: absolute;
+top: 40px; left: 40px;
+        "';
     }
     ?>
 >
@@ -32,5 +37,6 @@
 
     <a type="button" href="/user/changePassword.php" class="btn btn-primary">Change your password</a>
 </div>
-
+</div>
+</div>
 <?php include 'fragments/footer.php';?>
