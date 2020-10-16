@@ -34,6 +34,12 @@ if(isset($_GET['id'])) {
 		<div class="card-action"> 
 			 <span style="float:right;"><?php echo $message_time ?></span>
 		From: <b> <?php echo $message_sender?> </b>
+		<?php 
+		  echo '<a class="btn-floating btn-small waves-effect waves-light green" type="submit" href="/message/create.php?reply&id='.$_GET['id'].'&receiver='.$_GET['sender'].'&title='.$_GET['title'].'"><i class="material-icons">reply</i></a>';
+
+                    // delete
+                    echo '<a href="/message/delete.php?id='.$_GET['id'].'" class="btn-floating btn-small waves-effect waves-light red" type="submit" ><i class="material-icons">delete_forever</i></a>';
+		?>
 		</div>
 	</div>
 </div>
