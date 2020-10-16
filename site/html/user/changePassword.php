@@ -42,23 +42,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <?php include '../fragments/header.php';?>
 
 <body>
-    <div> <?php if(isset($alert)) {echo $alert;} ?></div>
+<div class="container">
+    <div class="card purple lighten-5">
+    <div class="card-content">
+    <span class="card-title"> Change your password here : </span>
+    <div > <?php if(isset($alert)) {echo $alert;} ?></div>
+    
     <form method="post" action="" role="form">
-
+    
         <div class="form-group">
             <label for="new_password">New Password: </label>
-            <input id="new_password" name="new_password" class="form-control" type="text" placeholder="NEW PASSWORD">
+            <input id="new_password" name="new_password" class="form-control" type="password" placeholder="NEW PASSWORD">
         </div>
 
         <div class="form-group">
             <label for="confirmation_password">Confirm Password: </label>
-            <input id="confirmation_password" name="confirmation_password" class="form-control" type="text" placeholder="CONFIRM PASSWORD">
+            <input id="confirmation_password" name="confirmation_password" class="form-control" type="password" placeholder="CONFIRM PASSWORD">
+        </div>
+        <div class="card-action">
+        <button class="btn btn-default" type="submit">Change password</button>
         </div>
 
-        <button class="btn btn-default" type="submit">Change password</button>
-
-    </form>
-
+    </form
+    </div>
+    </div>
+</div>
 </body>
 
 <?php include '../fragments/footer.php';?>
