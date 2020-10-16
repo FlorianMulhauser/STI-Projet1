@@ -1,7 +1,17 @@
 <?php include 'fragments/header.php';?>
 <?php include("filters/loginFilter.php"); ?>
 <!--    admin only-->
-<div class="container">
+<div class="container"
+    <?php
+    // si !admin on cache :))))
+    if(isset($_SESSION['role']) && $_SESSION['role'] == "administrateur") {
+        echo ' style="visibility:visible;"';
+    } else  {
+        echo ' style="visibility:hidden;"';
+    }
+    ?>
+>
+
     <h3>Navigation to other admin only pages</h3>
     <!--    admin only-->
     <a type="button" href="/user/register.php" class="btn btn-warning">Register a new user</a>
