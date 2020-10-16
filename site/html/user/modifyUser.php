@@ -92,7 +92,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET" )
 <body>
 
 <div class="container">
-<div class="card light-grey">
+<div class="card purple lighten-5">
 <div class="card-content">
 <?php if(empty($username)) { 
     echo ' <span class="card-title"> Modify a user here, search an user first. </span>
