@@ -13,7 +13,8 @@ CREATE TABLE IF NOT EXISTS user (
                         username TEXT, 
                         password TEXT, 
                         validity INTEGER DEFAULT 1,
-                        role TEXT);
+                        role TEXT
+                        );
                         
 INSERT INTO messages (title, message,time,sender,receiver) 
                 VALUES ('Bienvenue','Bienvenue sur le site, ceci est un message de deployement',strftime('%Y-%m-%d %H:%M:%S', datetime('now')),'SERVER_MSG','admin');

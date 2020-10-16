@@ -13,7 +13,7 @@
 * ouvrir un navigateur et aller sur `http://localhost:8080/login.php` ou n'importe quel autre page, elles devraient vous rediriger ici.
 * Voilà, le tour est joué !
 
-
+* Il est sûrement nécessaire d'attribuer les droits d'écriture sur le dossier `site/databases/` ainsi que `site/databases/database.sqlite`  (dans le doute un petit `chmod 777` ;) ). Ceci arrive car le dossier est un dossier partagé donc il appartient à l'OS hôte et non pas au docker. 
 
 
 
