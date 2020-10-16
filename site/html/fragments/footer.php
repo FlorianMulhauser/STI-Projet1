@@ -37,16 +37,18 @@
         </div>
     </div>
     <div class="footer-copyright">
+    
         <div class="container">
-            Made by Robin Cuénoud & Florian Mülhauser
-        </div>
-        <div class="container">
+            Made by Robin Cuénoud & Florian Mülhauser <span style="margin-left: 35%;">
          <?php if(isset($_SESSION['username']) ) {
                 echo ' logged in as <b>'.$_SESSION['username'].' </b> ';
             } 
             ?>
+        </span>
         </div>
+       
     </div>
+     
 </footer>
 
 
