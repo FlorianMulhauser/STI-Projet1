@@ -119,7 +119,7 @@ echo '
         <label for="TFusername">Username: </label>
             <input id="TFusername" name="TFusername" class="form-control" type="text" value="'.$username.'">
             <label for="TFpassword">Password: </label>
-            <input id="TFpassword" name="TFpassword" class="form-control" type="text" value="'.$password.'">
+            <input id="TFpassword" name="TFpassword" class="form-control" type="password" value="'.$password.'">
         </div>
 
 
