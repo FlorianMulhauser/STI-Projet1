@@ -9,7 +9,7 @@ if(isset($_SESSION["logged"]) && $_SESSION["logged"]){
     }
 
 
-include("fragments/DBHandler.php"); 
+include("handlers/DBHandler.php");
 
 
 $username = $password = "";

@@ -1,6 +1,6 @@
-<?php include("../fragments/loginFilter.php"); ?>
+<?php include("../filters/loginFilter.php"); ?>
 <?php 
-include("../fragments/DBHandler.php");
+include("../handlers/DBHandler.php");
 session_start();
 $receiver = $title = $content = $sender = "";
 if(isset($_GET['receiver']) && isset($_GET['title'])) {

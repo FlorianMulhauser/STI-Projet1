@@ -1,6 +1,6 @@
-<?php include("../fragments/loginFilter.php");
+<?php include("../filters/loginFilter.php");
 
-include("../fragments/DBHandler.php");
+include("../handlers/DBHandler.php");
 $db = new DBHandler();
 $new_password = $confirmation_password = "";
 $new_password_err = $confirmation_password_err = "";

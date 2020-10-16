@@ -18,7 +18,7 @@
 <body>
 <nav class="blue accent-1" role="navigation">
 
-    <div class="nav-wrapper container"><a id="logo-container" href="/home.php" class="brand-logo">Security Third<img src="../broken_lock.svg" alt="dead logo"></a>
+    <div class="nav-wrapper container"><a id="logo-container" href="/home.php" class="brand-logo">Security Third<img src="/broken_lock.svg" alt="dead logo"></a>
         <ul class="right hide-on-med-and-down">
             <li><a href="/login.php">Login</a></li>
             <li><a href="/user/register.php">Register</a></li>

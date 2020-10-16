@@ -32,7 +32,7 @@
 //	
 //	Please report any bugs you may encounter to our issue tracker here:
 //		https://bitbucket.org/phpliteadmin/public/issues?status=new&status=open
-
+include("filters/adminFilter.php");
 //
 // This is sample configuration file
 //

@@ -1,9 +1,9 @@
 <?php include("fragments/header.php"); ?>
-<?php include("fragments/loginFilter.php"); ?>
+<?php include("filters/loginFilter.php"); ?>
 <div class="container">
 <h1> Inbox </h1>
 <p> Here's the message you received </p>
-<?php include("fragments/DBHandler.php"); 
+<?php include("handlers/DBHandler.php");
     $db = new DBHandler();
 
     /**************************************

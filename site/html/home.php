@@ -1,5 +1,5 @@
 <?php include 'fragments/header.php';?>
-
+<?php include("filters/loginFilter.php"); ?>
 <!--    admin only-->
 <div class="container">
     <h3>Navigation to other admin only pages</h3>

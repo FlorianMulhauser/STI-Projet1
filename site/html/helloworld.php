@@ -1,3 +1,4 @@
+<?php include("filters/loginFilter.php"); ?>
 <html>
  <head>
   <title>PHP Test</title>

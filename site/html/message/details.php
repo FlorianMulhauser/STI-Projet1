@@ -1,7 +1,7 @@
-<?php include("../fragments/loginFilter.php"); ?>
+<?php include("../filters/loginFilter.php"); ?>
 <?php include("../fragments/header.php"); ?>
 <?php 
-include("../fragments/DBHandler.php");
+include("../handlers/DBHandler.php");
 $message_content = $message_sender =$message_time =  "";
 
 

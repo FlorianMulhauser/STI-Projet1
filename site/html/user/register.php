@@ -1,6 +1,6 @@
-<?php include("../fragments/adminFilter.php");
+<?php include("../filters/adminFilter.php");
 
-include("../fragments/DBHandler.php");
+include("../handlers/DBHandler.php");
 
 include '../fragments/header.php';
 
