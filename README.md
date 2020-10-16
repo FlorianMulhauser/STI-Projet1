@@ -33,7 +33,7 @@ Pour changer le database de base de l'infra (pas nécessaire car une database pr
 
 ### Divers login existants
 
-SCREENSHOT de la table user de la DB
+![](screenshots/comptes.PNG)
 
 * un utilisateur avec le rôle administrateur (admin/admin)
 * un utilisateur, collaborateur standard (user/user)
@@ -85,9 +85,15 @@ Le mot de passe pour phpliteadmin est "admin".
 
 Il n'y a pas de description supplémentaire pour toutes les pages. Elles sont toutes expliqués sur le site et certaine sont très straight-forward.
 
+Nous pouvons vérifier avec quel nom utilisateur nous sommes connecté en regardant le footer (en bas à droite):
+
+![](screenshots/connectedUser.PNG)
+
 #### 1) Inbox
 
 Ici apparait la liste de nos messages. Nous avons sur chacun 3 boutons (de gauche a droite):
+
+![](screenshots/message.PNG)
 
 * un pour répondre à l'auteur de ce message (un "Re:" sera ajouté a l'objet)
 * un pour afficher en détail le message
