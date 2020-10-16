@@ -7,9 +7,18 @@
 
 
             </div>
-            <div class="col l3 s12">
+            <div class="col l3 s12" 
+            <?php 
+            // si !admin on cache :))))
+            if(isset($_SESSION['role']) && $_SESSION['role'] == "administrateur") {
+                echo ' style="visibility:visible;"';
+            } else  {
+                echo ' style="visibility:hidden;"';
+            }
+            ?> 
+            >
             
-                <h5 class="white-text">Settings</h5>
+                <h5 class="white-text" >Administation</h5>
                 <ul>
                     <li><a class="white-text" href="/user/deleteUser.php">Delete a User</a></li>
                     <li><a class="white-text" href="/user/modifyUser.php">Modify a User</a></li>
@@ -18,7 +27,7 @@
                 </ul>
             </div>
             <div class="col l3 s12">
-                <h5 class="white-text">Connect</h5>
+                <h5 class="white-text">Application</h5>
                 <ul>
                     <li><a class="white-text" href="/inbox.php">Inbox</a></li>
                     <li><a class="white-text" href="/logout.php">logout</a></li>
