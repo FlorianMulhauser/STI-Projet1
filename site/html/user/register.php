@@ -70,9 +70,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
 <body>
-    <h3> Register a person here</h3>
+   
     <div class="container">
-
+    <div class="card purple lighten-5">
+    <div class="card-content">
+     <span class="card-title"> Register a person here</span>
         <form action="register.php?uid=<?php echo uniqid()?>" role="form" method="post">
             <div class="form-group">
                 <label for="TFusername">Username: </label>
@@ -81,7 +83,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             <div class="form-group">
                 <label for="TFpassword">Password: </label>
-                <input id="TFpassword" name="TFpassword" class="form-control" type="text" placeholder="PASSWORD">
+                <input id="TFpassword" name="TFpassword" class="form-control" type="password" placeholder="PASSWORD">
             </div>
 
 
@@ -115,10 +117,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </label>
                 </p>
             </div>
-
+            <div class="card-action">
             <button class="btn btn-success" type="submit">Register the user</button>
-
+</div>
         </form>
+        </div>
+        </div>
     </div>
 </body>
 <?php include '../fragments/footer.php';?>
