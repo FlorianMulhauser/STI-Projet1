@@ -40,6 +40,12 @@
         <div class="container">
             Made by Robin Cuénoud & Florian Mülhauser
         </div>
+        <div class="container">
+         <?php if(isset($_SESSION['username']) ) {
+                echo ' logged in as <b>'.$_SESSION['username'].' </b> ';
+            } 
+            ?>
+        </div>
     </div>
 </footer>
 
